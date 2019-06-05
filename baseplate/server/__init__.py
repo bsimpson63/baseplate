@@ -196,7 +196,9 @@ def load_app_and_run_server():
 
     logger.info("Listening on %s", listener.getsockname())
 
-    server.serve_forever()
+    stop_timeout = getattr(server, 'stop_timeout', None)
+
+    server.serve_forever(stop_timeout)
 
 
 def load_and_run_script():
